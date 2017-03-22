@@ -9,13 +9,15 @@
             [jepsen.mongodb [core :as m]
                             [mongo :as client]
                             [set :as set]
-                            [document-cas :as dc]]
+                            [document-cas :as dc]
+                            [dbhash :as dbh]]
             [jepsen [cli :as jc]
                     [core :as jepsen]]))
 
 (def test-names
   {"set" set/test
-   "register" dc/test})
+   "register" dc/test
+   "dbhash" dbh/test})
 
 (def opt-spec
   "Command line option specification for tools.cli."
