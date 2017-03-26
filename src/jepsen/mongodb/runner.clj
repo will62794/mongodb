@@ -14,6 +14,7 @@
             [jepsen [cli :as jc]
                     [core :as jepsen]]))
 
+; Mapping of test name strings to their test functions.
 (def test-names
   {"set" set/test
    "register" dc/test

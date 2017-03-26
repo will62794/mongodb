@@ -13,7 +13,14 @@
             [jepsen.mongodb.core :refer :all]
             [jepsen.mongodb.mongo :as m]))
 
-; Define a Client record type that extends client/Client from Jepsen core.
+
+; Define a 'Client' record type that implements client/Client from Jepsen core.
+
+; Protocols in Clojure, defined with (defprotocol name ...), are roughly like
+; interfaces in Java. They are just a collection of named functions & their
+; signatures. You can "implement" a protocol by defining a record using (defrecord
+; name [fields]) and implementing concrete versions of  the functions declared in
+; the protocol.
 (defrecord Client [db-name coll-name read-concern write-concern client coll]
   client/Client
   (setup! [this test node]
