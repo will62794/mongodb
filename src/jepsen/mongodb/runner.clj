@@ -10,7 +10,8 @@
                             [mongo :as client]
                             [set :as set]
                             [document-cas :as dc]
-                            [dbhash :as dbh]]
+                            [dbhash :as dbh]
+                            [rcmaj :as rcm]]
             [jepsen [cli :as jc]
                     [core :as jepsen]]))
 
@@ -18,7 +19,8 @@
 (def test-names
   {"set" set/test
    "register" dc/test
-   "dbhash" dbh/test})
+   "dbhash" dbh/test
+   "rcm" rcm/test})
 
 (def opt-spec
   "Command line option specification for tools.cli."

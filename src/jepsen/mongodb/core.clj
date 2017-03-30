@@ -479,7 +479,6 @@
                              conns))
 
           :stop (do (nt/reset-time! test)
-                    (info "Clocks reset")
                     (net/heal! (:net test) test)
                     (info "Network healed")
                     (c/on-nodes test start!)

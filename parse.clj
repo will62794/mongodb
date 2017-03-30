@@ -34,7 +34,7 @@
   {:timelimit timelimit :errs errs :total total :pct_errs pct_errs}
 )
 
-(def time-limits [200 400 600 800 1000 1200])
+(def time-limits [200 400 600 800 1000 1200 1400])
 (def results (map (partial pct_errs all_results) time-limits))
 
 (pprint results)
