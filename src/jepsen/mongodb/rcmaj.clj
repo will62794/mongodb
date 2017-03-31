@@ -141,15 +141,16 @@
                                 (gen/stagger avg-delay)))
 
 (defn test
-  "A read concern majority test. We insert many documents while periodically reading the state of the collection."
+  "A read concern majority test. We continuously insert documents 
+   while periodically reading the state of the collection."
   [opts]
   (test-
     "rcmaj"
     (merge
       {:client (client opts)
        :concurrency (count (:nodes opts))
-       ;Execute reads on a single thread.
-       :generator  (gen/reserve 29 (write-gen 1/2) 1 (read-gen 10))
+       ;Execute reads on a single thread and let all other threads do writes.
+       :generator  (gen/reserve 1 (read-gen 8) (write-gen 1/2))
        :final-generator nil
        :checker (checker/compose
                   {:set      read-committed ;checker/set
