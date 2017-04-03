@@ -498,7 +498,7 @@
             (gen/sleep 30)])))
 
 (defn test-
-  "Constructs a test with the given name prefixed by 'mongodb ', merging any
+  "Constructs a test with the given name prefixed by 'mongodb_', merging any
   given options. Special options for Mongo:
 
   :tarball            HTTP URL of a tarball to install
@@ -508,7 +508,7 @@
   [name opts]
   (merge
     (assoc tests/noop-test
-           :name            (str "mongodb " name " s:" (:storage-engine opts)
+           :name            (str "mongodb_" name "_s:" (:storage-engine opts)
                                  " p:" (:protocol-version opts))
            :os              debian/os
            :db              (db (:tarball opts))
